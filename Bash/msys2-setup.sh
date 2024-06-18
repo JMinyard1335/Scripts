@@ -1,24 +1,24 @@
 #!/bin/bash
 
-PACKAGE_LIST=(mingw-w64-ucrt-x86_64-make
-	      mingw-w64-ucrt-x86_64-cmake
-	      mingw-w64-ucrt-x86_64-clang
-	      mingw-w64-ucrt-x86_64-clang-tools-extra
-	      mingw-w64-ucrt-x86_64-gcc
-	      mingw-w64-ucrt-x86_64-gdb
-	      mingw-w64-ucrt-x86_64-python
-	      mingw-w64-ucrt-x86_64-python-pip
-	      mingw-w64-ucrt-x86_64-python-numpy
-	      mingw-w64-ucrt-x86_64-python-virtualenv
-	      mingw-w64-ucrt-x86_64-emacs
-	      mingw-w64-ucrt-x86_64-aspell
-	      git
-	      mingw-w64-ucrt-x86_64-github-cli
-	      mingw-w64-ucrt-x86_64-nodejs
-	      mingw-w64-ucrt-x86_64-gnupg
-	      # mingw-w64-ucrt-x86_64-jsonrpc-glib
-	      # mingw-w64-ucrt-x86_64-python-jsonrpc-server
-	     )
+PACKAGE_LIST=(
+    perl
+    make
+    cmake
+    clang
+    clang-tools-extra
+    gcc
+    gdb
+    python
+    python-pip
+    python-numpy
+    python-virtualenv
+    emacs
+    aspell
+    git
+    github-cli
+    nodejs
+    gnupg
+)
 PS3='Select an option: '
 options=("Set Info" "Update pacman" "Install Packages" "Set Up Git" "Set up Emacs" "Quit")
 
@@ -57,7 +57,7 @@ update_pacman() {
 install_packages() {
     read -p "Installing Packages May take a bit. Continue? (y/n) " res
     if [ $res == "y" ]; then
-	pacman -S "${PACKAGE_LIST[@]}"    
+	pacman -S "${MINGW_PACKAGE_PREFIX}-${PACKAGE_LIST[@]}"    
     else
 	echo "Packages will not be installed."
     fi    
